@@ -1,12 +1,42 @@
 package games_java.Hangman;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Hangman {
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
 		String[] hangman = new String[] { """
+				=========""", """
+				      |
+				=========""", """
+				      |
+				      |
+				=========""", """
+				      |
+				      |
+				      |
+				=========""", """
+				      |
+				      |
+				      |
+				      |
+				=========""", """
+				      |
+				      |
+				      |
+				      |
+				      |
+				=========""", """
+				  +---+
+				      |
+				      |
+				      |
+				      |
+				      |
+				=========""", """
 				  +---+
 				  |   |
 				      |
@@ -69,12 +99,53 @@ public class Hangman {
 		/* PART A1: make a char array with a line for each letter in the word */
 		// Example word: 'quiz'
 		// lines -> ['_', '_', '_', '_']
-		char[] lines = word.toCharArray();
+		char[] lines = "_".repeat(word.length()).toCharArray();
 
+		int parts = 0;
 
-		/* PART A3: make the game loop, don't use the hangman until part B */
+		while (Arrays.asList(lines).contains('_') == true) {
+			if (parts >= hangman.length){
+				break;
+			}
+			String msg = hangman[parts];
+			int i = 0;
+			while (i < lines.length) {
+				// add line character to the message
+				msg += lines[i] + " ";
+				i = i + 1;
+			}
 
-		/* PART B: display the hangman in the prompt */
+			// print the word too just for testing
+			System.out.println(msg);
+			String guess = sc.nextLine();
+
+			boolean isCorrect = false;
+
+			if (guess.length() == 1){
+				i = 0;
+				while (i < lines.length) {
+					// assuming guess is one letter
+					// check if the guess is equal to the character
+					// at index i in the word
+					if (guess.charAt(0) == word.charAt(i)) {
+						// change the line at the index to be the correct guess
+						lines[i] = guess.charAt(0);
+						isCorrect = true;
+					}
+					i = i + 1;	
+				}
+			} else if (guess.equals(word)) {
+				break;
+			}
+			if (isCorrect == false){
+				parts += 1;
+			}
+		}
+		if (parts < hangman.length){
+			System.out.println ("CONGRATULATIONS, YOU ARE SAFE!" + "\n\n The correct word is indeed " + word + "\n\n you have made " + parts + " mistakes");
+		} else {
+			System.out.println ("RIP DX" + "\n\n The correct word is " + word + "\n\n you have made " + parts + " mistakes");
+		}
 
 		sc.close();
 		System.exit(0);

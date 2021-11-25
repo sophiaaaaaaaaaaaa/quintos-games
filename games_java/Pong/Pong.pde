@@ -23,14 +23,13 @@ PImage imgLights = spriteArt(".......wyyyyw.......".repeat(10)+"\n"+".....wyyyyy
 PImage imgPot = spriteArt("""
 rrrrrrrrrrrrrrrrrrrr
 rrrrrrrrrrrrrrrrrrrr
-rrrrrrrrrrrrrrrrrrrr
-rrrrrrrrrrrrrr
-rrrrrrrrrrrrrr
-rrrrrrrrrrrrrr
-rrrrrrrrrrrrrr
-rrrrrrrrrrrrrr
-rrrrrrrrrrrrrr
-rrrrrrrrrrrrrr
+rbbrrrbrrbbbbr
+rbrbrbrbrrrbrr
+rbbrrbrbrrrbrr
+rbrrrbrbrrrbrr
+rbrrrbrbrrrbrr
+rbrrrbrbrrrbrr
+rbrrrrbrrrrbrr
 rrrrrrrrrrrrrr""");
 
 //PImage imgHand = spriteArt("..w..\n.www.\nwwww.\nwwww/\nwwwww\nwwwww\n.www.");
